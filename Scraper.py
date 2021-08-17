@@ -1,7 +1,12 @@
 import requests
+import sys
 from bs4 import BeautifulSoup
 
-URL = "https://www.washingtonpost.com/technology/2020/09/25/privacy-check-blacklight/"
+if len(sys.argv) != 2:
+    print("Please provide the URL of the website as an argument")
+    sys.exit()
+
+URL = sys.argv[1]
 page = requests.get(URL)
 
 soup = BeautifulSoup(page.content, "html.parser")
